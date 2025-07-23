@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- Demo Materials -->
+        <record id="material_cotton_basic" model="material.registration">
+            <field name="material_code">COT001</field>
+            <field name="material_name">Basic Cotton Fabric</field>
+            <field name="material_type">cotton</field>
+            <field name="material_buy_price">120.00</field>
+            <field name="supplier_id" ref="supplier_abc_textiles"/>
+        </record>
+
+        <record id="material_premium_cotton" model="material.registration">
+            <field name="material_code">COT002</field>
+            <field name="material_name">Premium Organic Cotton</field>
+            <field name="material_type">cotton</field>
+            <field name="material_buy_price">250.00</field>
+            <field name="supplier_id" ref="supplier_abc_textiles"/>
+        </record>
+
+        <record id="material_silk_fabric" model="material.registration">
+            <field name="material_code">FAB001</field>
+            <field name="material_name">Pure Silk Fabric</field>
+            <field name="material_type">fabric</field>
+            <field name="material_buy_price">450.00</field>
+            <field name="supplier_id" ref="supplier_xyz_fabrics"/>
+        </record>
+
+        <record id="material_polyester_fabric" model="material.registration">
+            <field name="material_code">FAB002</field>
+            <field name="material_name">Polyester Blend Fabric</field>
+            <field name="material_type">fabric</field>
+            <field name="material_buy_price">100.00</field>
+            <field name="supplier_id" ref="supplier_xyz_fabrics"/>
+        </record>
+
+        <record id="material_denim_basic" model="material.registration">
+            <field name="material_code">JEA001</field>
+            <field name="material_name">Basic Denim Jeans Material</field>
+            <field name="material_type">jeans</field>
+            <field name="material_buy_price">180.00</field>
+            <field name="supplier_id" ref="supplier_denim_world"/>
+        </record>
+
+        <record id="material_denim_premium" model="material.registration">
+            <field name="material_code">JEA002</field>
+            <field name="material_name">Premium Stretch Denim</field>
+            <field name="material_type">jeans</field>
+            <field name="material_buy_price">320.00</field>
+            <field name="supplier_id" ref="supplier_denim_world"/>
+        </record>
+
+        <record id="material_raw_denim" model="material.registration">
+            <field name="material_code">JEA003</field>
+            <field name="material_name">Raw Selvedge Denim</field>
+            <field name="material_type">jeans</field>
+            <field name="material_buy_price">500.00</field>
+            <field name="supplier_id" ref="supplier_denim_world"/>
+        </record>
+
+    </data>
+</odoo> 

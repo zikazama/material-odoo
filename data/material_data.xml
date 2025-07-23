@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <!-- Sample Suppliers -->
+        <record id="supplier_abc_textiles" model="material.supplier">
+            <field name="name">ABC Textiles Ltd.</field>
+            <field name="email">contact@abctextiles.com</field>
+            <field name="phone">+1-555-0123</field>
+            <field name="address">123 Textile Avenue, Industrial District, City</field>
+        </record>
+
+        <record id="supplier_xyz_fabrics" model="material.supplier">
+            <field name="name">XYZ Fabrics Inc.</field>
+            <field name="email">sales@xyzfabrics.com</field>
+            <field name="phone">+1-555-0456</field>
+            <field name="address">456 Cotton Road, Manufacturing Zone, City</field>
+        </record>
+
+        <record id="supplier_denim_world" model="material.supplier">
+            <field name="name">Denim World Co.</field>
+            <field name="email">info@denimworld.com</field>
+            <field name="phone">+1-555-0789</field>
+            <field name="address">789 Denim Street, Fashion District, City</field>
+        </record>
+
+    </data>
+</odoo> 

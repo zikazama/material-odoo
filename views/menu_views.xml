@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Main Menu -->
+        <menuitem 
+            id="menu_material_registration_root"
+            name="Material Registration"
+            sequence="10"/>
+
+        <!-- Materials Menu -->
+        <menuitem 
+            id="menu_materials"
+            name="Materials"
+            parent="menu_material_registration_root"
+            action="action_material"
+            sequence="10"/>
+
+        <!-- Suppliers Menu -->
+        <menuitem 
+            id="menu_suppliers"
+            name="Suppliers"
+            parent="menu_material_registration_root"
+            action="action_supplier"
+            sequence="20"/>
+
+        <!-- Configuration Menu -->
+        <menuitem 
+            id="menu_material_config"
+            name="Configuration"
+            parent="menu_material_registration_root"
+            sequence="90"/>
+
+        <!-- Material Types Menu (informational) -->
+        <menuitem 
+            id="menu_material_types"
+            name="Material Types"
+            parent="menu_material_config"
+            sequence="10"
+            action="action_material"/>
+
+    </data>
+</odoo> 

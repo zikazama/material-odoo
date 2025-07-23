@@ -1,0 +1,32 @@
+services:
+  web:
+    image: odoo:14.0
+    platform: linux/amd64
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./material_registration:/mnt/extra-addons/material_registration
+      - odoo-web-data:/var/lib/odoo
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+      - POSTGRES_DB=postgres
+    # Start Odoo and install the module automatically
+    command: ["odoo", "-d", "postgres", "-i", "base,material_registration", "--without-demo=False", "--dev=all"]
+
+  db:
+    image: postgres:13
+    platform: linux/amd64
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+
+volumes:
+  odoo-web-data:
+  odoo-db-data: 

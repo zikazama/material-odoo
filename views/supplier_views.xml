@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Supplier Tree View -->
+        <record id="view_supplier_tree" model="ir.ui.view">
+            <field name="name">material.supplier.tree</field>
+            <field name="model">material.supplier</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="phone"/>
+                    <field name="material_count"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Supplier Form View -->
+        <record id="view_supplier_form" model="ir.ui.view">
+            <field name="name">material.supplier.form</field>
+            <field name="model">material.supplier</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </group>
+                            <group>
+                                <field name="material_count" readonly="1"/>
+                                <field name="create_date" readonly="1"/>
+                                <field name="write_date" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="address" placeholder="Enter supplier address..."/>
+                        </group>
+                        <notebook>
+                            <page string="Materials">
+                                <field name="material_ids" readonly="1">
+                                    <tree>
+                                        <field name="material_code"/>
+                                        <field name="material_name"/>
+                                        <field name="material_type"/>
+                                        <field name="material_buy_price"/>
+                                        <field name="create_date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Supplier Search View -->
+        <record id="view_supplier_search" model="ir.ui.view">
+            <field name="name">material.supplier.search</field>
+            <field name="model">material.supplier</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="Supplier Name"/>
+                    <field name="email"/>
+                    <filter string="Has Materials" name="has_materials" domain="[('material_count', '>', 0)]"/>
+                    <filter string="No Materials" name="no_materials" domain="[('material_count', '=', 0)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Material Count" name="group_material_count" context="{'group_by': 'material_count'}"/>
+                        <filter string="Create Date" name="group_create_date" context="{'group_by': 'create_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Supplier Action -->
+        <record id="action_supplier" model="ir.actions.act_window">
+            <field name="name">Suppliers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">material.supplier</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first supplier!
+                </p>
+                <p>
+                    Suppliers provide materials for your business. Add supplier information
+                    including contact details and address to manage your supply chain effectively.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo> 
