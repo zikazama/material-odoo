@@ -53,18 +53,26 @@ class Supplier(models.Model):
         except Exception:
             return 0
 
+    @api.model
+    def create(self, vals):
+        """Override create to validate required fields."""
+        if 'name' not in vals or not vals.get('name'):
+            raise ValidationError(_('Supplier name is required.'))
+        return super(Supplier, self).create(vals)
+
     @api.constrains('name')
     def _check_unique_name(self):
-        """Ensure supplier name is unique."""
+        """Ensure supplier name is unique and not empty."""
         for supplier in self:
-            if supplier.name:
-                existing = self.search([
-                    ('name', '=', supplier.name),
-                    ('id', '!=', supplier.id)
-                ])
-                if existing:
-                    raise ValidationError(_('Supplier name must be unique. '
-                                          'A supplier with name "%s" already exists.') % supplier.name)
+            if not supplier.name:
+                raise ValidationError(_('Supplier name is required.'))
+            existing = self.search([
+                ('name', '=', supplier.name),
+                ('id', '!=', supplier.id)
+            ])
+            if existing:
+                raise ValidationError(_('Supplier name must be unique. '
+                                      'A supplier with name "%s" already exists.') % supplier.name)
 
     @api.constrains('email')
     def _check_email_format(self):

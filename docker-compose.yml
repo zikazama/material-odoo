@@ -7,7 +7,7 @@ services:
     ports:
       - "8069:8069"
     volumes:
-      - ./material_registration:/mnt/extra-addons/material_registration
+      - ./:/mnt/extra-addons/material_registration
       - odoo-web-data:/var/lib/odoo
     environment:
       - HOST=db

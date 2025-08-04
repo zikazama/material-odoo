@@ -118,23 +118,23 @@ class TestSupplierModel(TransactionCase):
 
     def test_supplier_name_search(self):
         """Test name_search functionality."""
-        # Create test suppliers
+        # Create test suppliers with unique names to avoid conflicts
         supplier1 = self.Supplier.create({
-            'name': 'ABC Textiles',
-            'email': 'contact@abc.com'
+            'name': 'Test ABC Textiles Unique',
+            'email': 'contact@abctestunique.com'
         })
         supplier2 = self.Supplier.create({
-            'name': 'XYZ Fabrics',
-            'email': 'info@xyz.com'
+            'name': 'Test XYZ Fabrics Unique',
+            'email': 'info@xyztestunique.com'
         })
         
-        # Search by name
-        results = self.Supplier.name_search('ABC')
+        # Search by name - use unique part to avoid conflicts
+        results = self.Supplier.name_search('Test ABC Textiles Unique')
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0][0], supplier1.id)
         
-        # Search by email
-        results = self.Supplier.name_search('xyz.com')
+        # Search by email - use unique part to avoid conflicts
+        results = self.Supplier.name_search('xyztestunique.com')
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0][0], supplier2.id)
         
